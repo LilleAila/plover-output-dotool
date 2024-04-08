@@ -76,7 +76,7 @@ class KeyboardEmulation(*([KeyboardEmulationBase] if have_output_plugin else [])
     def cancel(self):
         pass
 
-    def set_ms(self, ms):
+    def set_key_press_delay(self, ms):
         if self._ms != ms:
             self._ms = ms
 
@@ -104,8 +104,6 @@ class KeyboardEmulation(*([KeyboardEmulationBase] if have_output_plugin else [])
             arg = "keydown " if pressed else "keyup "
             # Send keyup and then keydown to avoid clashes
             self._dotool(arg + k)
-
-
 
     def send_backspaces(self, n):
         self._dotool_string("\b" * n)
